@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Emoji Match Game</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+
+
+                <div class="progress-label">Score: <span id="score">0</span></div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <div class="stats">
+                    <div class="score">Goals: <span id="goals">100</span></div>
+                    <div class="moves">Moves: <span id="moves">14</span></div>
+                </div>
+
+            </div>
+        </header>
+
+        <section id="game-board">
+            <div id="board"></div>
+        </section>
+
+
+        <section id="reset_button_section"><button id="resetButton">Reset Game</button></section>
+        <footer class="footer">
+            <p>&copy; 2024 Adoveo. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <div id="gameModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modalMessage"></p>
+            <button id="modalButton">OK</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

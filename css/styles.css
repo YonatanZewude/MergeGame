@@ -1,0 +1,311 @@
+:root {
+  --background-image-default: url("../images/bg.webp");
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    90deg,
+    rgba(250, 75, 206, 0.384) 0%,
+    rgba(116, 114, 12, 0.342) 71%
+  );
+  width: 80;
+}
+.header {
+  background: linear-gradient(270deg, #ff8c00, #ff0080, #00bfff, #32cd32);
+  background-size: 800% 800%;
+  animation: moveBackground 10s ease infinite;
+  padding: calc(1.5vw + 10px);
+  text-align: center;
+  border-bottom: 3px solid #007bff;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+/* Flytta @keyframes utanför .header */
+@keyframes moveBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  height: 100vh;
+  max-height: 1200px;
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  background-image: var(--background-image-default);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 95vh;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1vh;
+}
+
+.score,
+.moves {
+  font-size: clamp(1.2rem, 1.5vw, 1.8rem);
+  font-weight: bold;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  height: calc(1.2vh + 8px);
+  width: 80%;
+  margin-top: 1vh;
+  position: relative;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ff5f6d, #ffc371);
+  border-radius: 10px;
+  transition: width 0.3s ease-in-out;
+}
+
+.progress-label {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#game-board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 1.2vw;
+  width: 90%;
+  max-width: 500px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  padding-right: 30px;
+  margin: 24px;
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(2.5rem, 2.9vw, 3.2rem);
+  cursor: grab;
+  background: linear-gradient(to bottom, #f3f7e7, #e0e0f8);
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05),
+    inset 0 4px 6px rgba(255, 255, 255, 0.2);
+  aspect-ratio: 1 / 1;
+  perspective: 1000px;
+}
+
+.cell:hover {
+  transform: translateY(-5px) rotateX(10deg) rotateY(10deg);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2), 0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cell:active {
+  cursor: grabbing;
+  transform: translateY(2px) rotateX(0deg) rotateY(0deg) scale(0.95);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to bottom, #e0e0f8, #f3f7e7);
+}
+
+#reset_button_section {
+  text-align: center;
+}
+
+.footer {
+  text-align: center;
+  width: 100%;
+  background: linear-gradient(to bottom, #c2e9fa, #a1c4fd);
+}
+
+#resetButton {
+  padding: 10px;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  border: none;
+  border-radius: 10px;
+  color: #070707;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background-color 0.6s ease, transform 0.2s ease;
+  margin-bottom: 20px;
+}
+
+#resetButton:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+#resetButton:active {
+  background-color: #004080;
+}
+
+@media (max-width: 600px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container {
+    width: 100%;
+    height: 100%;
+  }
+
+  #board {
+    gap: 2vw;
+    margin: 20px;
+    padding-right: 20px;
+  }
+
+  .cell {
+    font-size: clamp(2rem, 3vw, 3.5rem);
+  }
+
+  #resetButton {
+    font-size: 16px;
+    align-items: center;
+    padding: 10px;
+  }
+  .footer {
+    margin-top: 20px;
+    font-size: 12px;
+  }
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+  backdrop-filter: blur(5px);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.show {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 30px 20px;
+  border: none;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 8px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(0.95);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  background: linear-gradient(135deg, #e0e4ff, #fefefe);
+}
+
+.modal-content:hover {
+  transform: perspective(1000px) rotateX(3deg) rotateY(-3deg) scale(1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.close {
+  color: #ff5e5e;
+  float: right;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+  color: #ff1a1a;
+  transform: scale(1.1);
+  text-shadow: 0 2px 4px rgba(255, 0, 0, 0.5);
+  text-decoration: none;
+}
+
+#modalButton {
+  padding: 15px 30px;
+  margin-top: 20px;
+  background: linear-gradient(45deg, #4caf50, #6fbf73);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#modalButton:hover {
+  background: linear-gradient(45deg, #45a049, #5fbf5f);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+#modalButton:active {
+  background: linear-gradient(45deg, #388e3c, #4caf50);
+  transform: translateY(2px) scale(0.98);
+}
