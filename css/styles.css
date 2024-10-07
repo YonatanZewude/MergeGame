@@ -23,9 +23,15 @@ body {
   width: 80;
 }
 .header {
-  background: linear-gradient(270deg, #ff8c00, #ff0080, #00bfff, #32cd32);
-  background-size: 800% 800%;
-  animation: moveBackground 15s ease infinite;
+  background: linear-gradient(
+    270deg,
+    #ff8c00,
+    #ff0080,
+    #00bfff,
+    #32cd32
+  ); /* Gradientfärger */
+  background-size: 800% 800%; /* Storleken på gradienten */
+  animation: moveBackground 30s ease infinite; /* Längre duration för långsam övergång */
   padding: calc(1.5vw + 10px);
   text-align: center;
   border-bottom: 3px solid #007bff;
@@ -33,16 +39,22 @@ body {
   border-top-right-radius: 20px;
 }
 
-/* Flytta @keyframes utanför .header */
+/* Nyckelbildrutor för gradvis färgförändring */
 @keyframes moveBackground {
   0% {
     background-position: 0% 50%;
   }
+  25% {
+    background-position: 50% 50%; /* Flytta färgen långsamt till mitten */
+  }
   50% {
-    background-position: 100% 50%;
+    background-position: 100% 50%; /* Flytta färgen långsamt till slutet */
+  }
+  75% {
+    background-position: 50% 50%; /* Flytta tillbaka till mitten */
   }
   100% {
-    background-position: 0% 50%;
+    background-position: 0% 50%; /* Återgå till startposition */
   }
 }
 
